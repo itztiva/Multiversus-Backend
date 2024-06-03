@@ -1,5 +1,5 @@
 {
-  "name": "multiverses-backend",
+  "name": "multiversus-backend",
   "module": "src/index.ts",
   "type": "module",
   "devDependencies": {

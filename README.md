@@ -1,4 +1,4 @@
-# multiverses-backend
+# multiversus-backend
 
 To install dependencies:
 
