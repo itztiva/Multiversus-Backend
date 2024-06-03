@@ -9,6 +9,8 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "hono": "^4.4.2"
+    "crypto": "^1.0.1",
+    "hono": "^4.4.2",
+    "jsonwebtoken": "^9.0.2"
   }
 }
