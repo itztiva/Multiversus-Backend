@@ -15,7 +15,7 @@ export default function () {
       },
       "fr"
     );
-
+ 
     return c.json({
       access_token: accessToken,
       account: {

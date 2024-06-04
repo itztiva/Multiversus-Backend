@@ -1,6 +1,7 @@
 import { Hono } from "hono";
 import routing from "./utils/routing";
 import path from "node:path"
+import { startProxy } from "./proxy/setup";
 import Variables from "./variables/Variables";
 
 const app = new Hono({ strict: false });
@@ -17,7 +18,7 @@ app.use(async (c, next) => {
       console.log(`URL ${c.req.url} | METHOD ${c.req.method} | STATUS ${c.res.status}`);
     }
 });
-
+// await startProxy();
 await routing.loadRoutes(path.join(__dirname, "routes"), app);
 
 import("./database/conn");
