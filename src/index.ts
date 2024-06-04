@@ -1,13 +1,11 @@
 import { Hono } from "hono";
 import routing from "./utils/routing";
 import path from "node:path"
+import Variables from "./variables/Variables";
 
 const app = new Hono({ strict: false });
 
-Bun.serve({
-    port: 5555,
-    fetch: app.fetch
-})
+export const config = Variables.Register();
 
 export default app;
 
@@ -22,5 +20,6 @@ app.use(async (c, next) => {
 
 await routing.loadRoutes(path.join(__dirname, "routes"), app);
 
+import("./database/conn");
 
-console.log("listening on http://127.0.0.1:5555")
+console.log(`listening on http://127.0.0.1:${config.PORT}`)
