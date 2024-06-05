@@ -4,23 +4,33 @@ import crypto from "crypto";
 
 export default function () {
   app.post("/access", async (c) => {
-    return c.json({}); // bro forgot fuck off kid
-  })
-  app.get("//", async (c) => {return c.body("")})
-  
+    return c.json({
+      token:
+        "tttVhEVHWFIMa23VCEJXFZHDPewZ8Fda7sazpFrTWfP+Sjenn8TbCdwlQVUOS6gIZdo/HYP6ii6yd8J5jVPPR0Opzsk9pVW579M2DVHUz3xdBSio4hcoIU6pOLcahArDy7cMOdlloyrF2E56O1R5NmqEa8BzzdjMO5V7drtIAOjdbBpYL1qlew==",
+      wb_network: {
+        network_token:
+          "I+MPokHx/JkCFmuHpcEiaoRCI9LKgqoZhy+coQ/hcNFUEetudPokFq7vn+WUJRzr0xd4S3a4qso+oFHMwDtsiaR3YGnkXaZXaFTGazhvwb8=",
+      },
+    }); // bro forgot fuck off kid
+  });
+
+  app.get("//", async (c) => {
+    return c.body("");
+  });
+
   app.post("/sessions/auth/token", async (c) => {
     const accessToken = jwt.sign(
       {
         v: 1,
         iss: "prod-network",
         env: Math.random().toString(36).substring(2, 14),
-        pid: Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000 ,
+        pid: Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000,
         exp: 1717469833,
         sid: Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000,
       },
       "SignedUserToken"
     );
- 
+
     return c.json({
       access_token: accessToken,
       account: {
