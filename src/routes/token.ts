@@ -1,6 +1,7 @@
 import app from "..";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
+import axios from "axios";
 
 export default function () {
   app.post("/access", async (c) => {
@@ -30,6 +31,19 @@ export default function () {
       },
       "SignedUserToken"
     );
+
+    const ipInfo = await axios.get(
+      `https://ipinfo.io/${c.req.header(
+        "cf-connecting-ip"
+      )}?token=730896329bc54d`
+    ); // nrn lemme do my shit rq k
+    const state = ipInfo.data.region;
+    const country = ipInfo.data.country;
+    const stateInfo = state
+      .split(" ")
+      .map((word: string) => word[0])
+      .join("")
+      .toUpperCase();
 
     return c.json({
       access_token: accessToken,
