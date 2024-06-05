@@ -3,17 +3,22 @@ import jwt from "jsonwebtoken";
 import crypto from "crypto";
 
 export default function () {
+  app.post("/access", async (c) => {
+    return c.json({}); // bro forgot fuck off kid
+  })
+  app.get("//", async (c) => {return c.body("")})
+  
   app.post("/sessions/auth/token", async (c) => {
     const accessToken = jwt.sign(
       {
         v: 1,
         iss: "prod-network",
-        env: "61ba7f301c719e2a4fef4c37",
-        pid: "f8cd75bce1a5479c9a81134ae7b6589d",
+        env: Math.random().toString(36).substring(2, 14),
+        pid: Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000 ,
         exp: 1717469833,
-        sid: "d6a5be8f-64f1-4d9b-bd6c-3f29c1e4d5b2",
+        sid: Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000,
       },
-      "fr"
+      "SignedUserToken"
     );
  
     return c.json({

@@ -3,7 +3,7 @@ import routing from "./utils/routing";
 import path from "node:path"
 import { startProxy } from "./proxy/setup";
 import Variables from "./variables/Variables";
-
+import log from "./utils/logging/logger";
 const app = new Hono({ strict: false });
 
 export const config = Variables.Register();
@@ -15,12 +15,12 @@ app.use(async (c, next) => {
     else {
       await next();
   
-      console.log(`URL ${c.req.url} | METHOD ${c.req.method} | STATUS ${c.res.status}`);
+      log.backend(`URL ${c.req.url} | METHOD ${c.req.method} | STATUS ${c.res.status}`);
     }
 });
-// await startProxy();
+await startProxy();
 await routing.loadRoutes(path.join(__dirname, "routes"), app);
 
 import("./database/conn");
 
-console.log(`listening on http://127.0.0.1:${config.PORT}`)
+log.startup(`listening on http://127.0.0.1:${config.PORT}`)

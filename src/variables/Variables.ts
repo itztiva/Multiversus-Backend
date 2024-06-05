@@ -2,7 +2,7 @@ import { z } from "zod";
 import { ConfigScheme } from "./schemes/config.scheme";
 import dotenv from "dotenv";
 import { resolve } from "node:path";
-
+import logger from "../utils/logging/logger";
 export default class Variables {
   private static validatedConfig: z.infer<typeof ConfigScheme>;
   public static config: z.infer<typeof ConfigScheme>;
@@ -28,7 +28,7 @@ export default class Variables {
   public static Register(): z.infer<typeof ConfigScheme> {
     this.Validate();
 
-    console.log("Config registered");
+    logger.startup("Config registered");
     this.config = this.validatedConfig;
     return this.config;
   }

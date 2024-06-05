@@ -5,8 +5,8 @@ import app from "..";
 
 export async function loadCerts(): Promise<Certificates> {
   const [key, cert]: [Buffer, Buffer] = await Promise.all([
-    fs.readFile(path.join(__dirname, "certs", "ol.epicgames.com.key")),
-    fs.readFile(path.join(__dirname, "certs", "ol.epicgames.com.chain.cert")),
+    fs.readFile(path.join(__dirname, "certs", "dokken-api.wbagora.key")),
+    fs.readFile(path.join(__dirname, "certs", "dokken-api.wbagora.cert")),
   ]);
 
   return { key, cert };
