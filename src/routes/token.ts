@@ -11,7 +11,7 @@ export default function () {
         network_token:
           "I+MPokHx/JkCFmuHpcEiaoRCI9LKgqoZhy+coQ/hcNFUEetudPokFq7vn+WUJRzr0xd4S3a4qso+oFHMwDtsiaR3YGnkXaZXaFTGazhvwb8=",
       },
-    }); // bro forgot fuck off kid
+    });
   });
 
   app.get("//", async (c) => {
