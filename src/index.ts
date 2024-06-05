@@ -10,6 +10,12 @@ export const config = Variables.Register();
 
 export default app;
 
+app.get("/", async (c) => {
+  return c.json({
+    message: "Hello from MVS-Backend!"
+  })
+});
+
 app.use(async (c, next) => {
     if (c.req.path === "/images/icons/gear.png" || c.req.path === "/favicon.ico") await next();
     else {
