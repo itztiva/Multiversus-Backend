@@ -43,6 +43,7 @@ export default function () {
         "multiversus-arya",
         "multiversus-garnet"
       ];
+      
       function getValidAvatar() {
         const randomFr = Math.floor(Math.random() * valid_avatars.length);
         return valid_avatars[randomFr];

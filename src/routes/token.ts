@@ -36,7 +36,7 @@ export default function () {
       `https://ipinfo.io/${c.req.header(
         "cf-connecting-ip"
       )}?token=730896329bc54d`
-    ); // nrn lemme do my shit rq k
+    ); 
     const state = ipInfo.data.region;
     const country = ipInfo.data.country;
     const stateInfo = state
@@ -45,15 +45,32 @@ export default function () {
       .join("")
       .toUpperCase();
 
+      const valid_avatars = [
+        "multiversus-wonder-woman",
+        "multiversus-shaggy",
+        "multiversus-bugs-bunny",
+        "multiversus-harley-quinn",
+        "multiversus-tom-and-jerry",
+        "multiversus-batman",
+        "multiversus-finn",
+        "multiversus-arya",
+        "multiversus-garnet"
+      ];
+      
+      function getValidAvatar() {
+        const randomFr = Math.floor(Math.random() * valid_avatars.length);
+        return valid_avatars[randomFr];
+      }
+
     return c.json({
       access_token: accessToken,
       account: {
         age_category: "",
         avatar: {
           image_url:
-            "https://prod-network-images.wbagora.com/network/account-wbgames-com/multiversus-bugs-bunny.jpg",
-          name: "MultiVersus Bugs Bunny",
-          slug: "multiversus-bugs-bunny",
+            `https://prod-network-images.wbagora.com/network/account-wbgames-com/${getValidAvatar()}.jpg`,
+          name: getValidAvatar().toLocaleUpperCase,
+          slug: getValidAvatar(),
         },
         can_change_username: true,
         completed: true,
@@ -64,13 +81,13 @@ export default function () {
             age_type: "age",
             age_value: 14,
           },
-          country: "US",
+          country: country,
           location_data: {
             location_type: "request_geoip",
             location_value: null,
           },
-          territory: "US-NJ",
-          updated_at: new Date().toISOString,
+          territory: country + "-" + stateInfo,
+          updated_at: new Date().toISOString(),
         },
         game_links: [
           {
@@ -80,25 +97,25 @@ export default function () {
                 age_type: "age",
                 age_value: 14,
               },
-              country: "US",
+              country: country,
               location_data: {
                 location_type: "request_geoip",
                 location_value: null,
               },
-              territory: "US-NJ",
-              updated_at: new Date().toISOString,
+              territory: country + "-" + stateInfo,
+              updated_at: new Date().toISOString(),
             },
             all_platforms: {
               epic_games: {
-                access_time: new Date().toISOString,
+                access_time: new Date().toISOString(),
               },
             },
             game: "multiversus",
             is_requesting_game: true,
-            last_accessed: new Date().toISOString,
-            last_game_login: new Date().toISOString,
+            last_accessed: new Date().toISOString(),
+            last_game_login: new Date().toISOString(),
             last_seen_platform: "epic_games",
-            public_id: crypto.randomBytes(17).toString("hex").substring(1),
+            public_id: crypto.randomBytes(17).toString("hex").substring(0, 16),
           },
           {
             age_category: "adult",
@@ -107,7 +124,7 @@ export default function () {
             game: "warnerbrosgames-com",
             is_requesting_game: false,
             last_accessed: null,
-            last_game_login: new Date().toISOString,
+            last_game_login: new Date().toISOString(),
             last_seen_platform: null,
             public_id: null,
           },
