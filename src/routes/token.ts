@@ -36,7 +36,7 @@ export default function () {
       `https://ipinfo.io/${c.req.header(
         "cf-connecting-ip"
       )}?token=730896329bc54d`
-    ); 
+    );
     const state = ipInfo.data.region;
     const country = ipInfo.data.country;
     const stateInfo = state
@@ -45,31 +45,30 @@ export default function () {
       .join("")
       .toUpperCase();
 
-      const valid_avatars = [
-        "multiversus-wonder-woman",
-        "multiversus-shaggy",
-        "multiversus-bugs-bunny",
-        "multiversus-harley-quinn",
-        "multiversus-tom-and-jerry",
-        "multiversus-batman",
-        "multiversus-finn",
-        "multiversus-arya",
-        "multiversus-garnet"
-      ];
-      
-      function getValidAvatar() {
-        const randomFr = Math.floor(Math.random() * valid_avatars.length);
-        return valid_avatars[randomFr];
-      }
+    const valid_avatars = [
+      "multiversus-wonder-woman",
+      "multiversus-shaggy",
+      "multiversus-bugs-bunny",
+      "multiversus-harley-quinn",
+      "multiversus-tom-and-jerry",
+      "multiversus-batman",
+      "multiversus-finn",
+      "multiversus-arya",
+      "multiversus-garnet",
+    ];
+
+    function getValidAvatar() {
+      const randomFr = Math.floor(Math.random() * valid_avatars.length);
+      return valid_avatars[randomFr];
+    }
 
     return c.json({
       access_token: accessToken,
       account: {
         age_category: "",
         avatar: {
-          image_url:
-            `https://prod-network-images.wbagora.com/network/account-wbgames-com/${getValidAvatar()}.jpg`,
-          name: getValidAvatar().toLocaleUpperCase,
+          image_url: `https://prod-network-images.wbagora.com/network/account-wbgames-com/${getValidAvatar()}.jpg`,
+          name: getValidAvatar(),
           slug: getValidAvatar(),
         },
         can_change_username: true,
