@@ -27,6 +27,6 @@ app.use(async (c, next) => {
 await startProxy();
 await routing.loadRoutes(path.join(__dirname, "routes"), app);
 
-import("./database/conn");
+//import("./database/conn");
 
 log.startup(`listening on http://127.0.0.1:${config.PORT}`)
