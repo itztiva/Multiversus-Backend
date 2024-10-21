@@ -1,5 +1,7 @@
 # multiversus-backend
 
+Never finished, If someone is interested in finishing it enjoy!
+
 To install dependencies:
 
 ```bash
